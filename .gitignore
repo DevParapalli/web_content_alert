@@ -127,3 +127,22 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# State Files
+state.json
+
+# Alerts
+/src/alerts/**
+!/src/alerts/example_alert.py
+
+# websites
+/src/websites/**
+!/src/websites/example_website.py
+
+# stores
+/src/stores/**
+!/src/stores/example_store.py
+
+# endpoints
+/src/endpoints/**
+!/src/endpoints/example_endpoint.py
