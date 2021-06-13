@@ -24,7 +24,7 @@ def store_importer(store):
 
 # Removing examples.
 alerts.pop(alerts.index('example_alert'))
-#websites.pop(websites.index('example_website'))
+websites.pop(websites.index('example_website'))
 endpoints.pop(endpoints.index('example_endpoint'))
 stores.pop(stores.index('example_store'))
 

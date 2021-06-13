@@ -1,7 +1,7 @@
-""" Dweet Storage """
+""" Dweet Sample Storage """
 import requests
 
-from store import StateStorage
+from ..store import StateStorage
 
 DWEET = "your-thing-here"
 DWEET_GET = f"https://dweet.io/get/latest/dweet/for/{DWEET}"
