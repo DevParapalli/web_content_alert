@@ -1,4 +1,4 @@
-from util import EXPORTS
+from util import EXPORTS as UTIL
 from selenium import webdriver
 from datetime import datetime
 
@@ -15,19 +15,19 @@ endpoints = {}
 
 # get_state
 # We will use only 1 store
-store = EXPORTS['stores'][0].EXPORTS['store']
+store = UTIL['stores'][0].EXPORTS['store']
 previous_state = store.get_state()
 previous_websites = previous_state['websites']
 previous_endpoints = previous_state['endpoints']
 
-for website in EXPORTS['websites']:
-    websites[website] = EXPORTS['websites'][website].EXPORTS['website'].check(remote_driver)
+for website in UTIL['websites']:
+    websites[website] = UTIL['websites'][website].EXPORTS['website'].check(remote_driver)
 
-for alert in EXPORTS['alerts']:
-    alerts[alert] = EXPORTS['alerts'][alert].EXPORTS['alert-function'].execute
+for alert in UTIL['alerts']:
+    alerts[alert] = UTIL['alerts'][alert].EXPORTS['alert-function'].execute
 
-for endpoint in EXPORTS['endpoints']:
-    endpoints[endpoint] = EXPORTS['endpoints'][endpoint].EXPORTS['endpoint'].get_data()
+for endpoint in UTIL['endpoints']:
+    endpoints[endpoint] = UTIL['endpoints'][endpoint].EXPORTS['endpoint'].get_data()
 
 def mass_alert(title, message):
     for alert in alerts:
