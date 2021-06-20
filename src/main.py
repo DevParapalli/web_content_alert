@@ -17,8 +17,12 @@ endpoints = {}
 # We will use only 1 store
 store = UTIL['stores'][0].EXPORTS['store']
 previous_state = store.get_state()
-previous_websites = previous_state['websites']
-previous_endpoints = previous_state['endpoints']
+try:
+    previous_websites = previous_state['websites']
+    previous_endpoints = previous_state['endpoints']
+except KeyError: # Incase of timeout
+    previous_websites = {}
+    previous_endpoints = {}
 
 for website in UTIL['websites']:
     websites[website] = UTIL['websites'][website].EXPORTS['website'].check(remote_driver)
@@ -35,7 +39,7 @@ def mass_alert(title, message):
 
 mass_alert(
     f"STATUS",
-    f"Started Checks at {datetime.now()}"
+    f"Started Checks at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
 )
 
 
@@ -70,7 +74,7 @@ for website in websites:
             # We didn't track this key
             mass_alert(
                 f"{website}",
-                f"NEW KEY ADDED: {key}, \nNow: {websites[website][key]}"
+                f"NEW KEY ADDED: {key} \nNow: {websites[website][key]}"
             )
 
 for website in previous_websites:
@@ -139,5 +143,5 @@ store.store_state(
 
 mass_alert(
     "STATUS",
-    f"Ended Checks at {datetime.now()}"
+    f"Ended Checks at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
 )
